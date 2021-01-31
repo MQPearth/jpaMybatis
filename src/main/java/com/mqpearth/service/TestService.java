@@ -30,6 +30,7 @@ public class TestService {
 
     public void jpaDelete() {
         infoRepository.deleteByName("张三");
+        // mock exception
         int i = 1 / 0;
     }
 
