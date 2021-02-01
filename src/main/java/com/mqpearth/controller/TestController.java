@@ -47,9 +47,19 @@ public class TestController {
     }
 
     @GetMapping("/mybatisSelect")
-
     public void mybatisSelect() {
         testService.mybatisSelect();
+    }
+
+    @GetMapping("/mixedDelete")
+    public void mixedDelete() {
+        testService.mixedDelete();
+    }
+
+
+    @GetMapping("/propagation")
+    public void propagation() {
+        testService.propagation();
     }
 
 }

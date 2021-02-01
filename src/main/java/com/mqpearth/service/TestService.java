@@ -23,6 +23,9 @@ public class TestService {
     @Autowired
     InfoRepository infoRepository;
 
+    @Autowired
+    TestService testService;
+
 
     public void jpaSave() {
         infoRepository.save(new Info(null, "张三", "123456"));
@@ -48,8 +51,30 @@ public class TestService {
 
     }
 
+
     public void mybatisSelect() {
         System.out.println(infoMapper.findByName("张三"));
+    }
+
+    /**
+     * 事务管理器测试
+     */
+    public void mixedDelete() {
+        infoMapper.deleteByName("张三");
+        infoRepository.deleteByName("李四");
+        int i = 1 / 0;
+
+    }
+
+    /**
+     * 事务传播测试
+     */
+    public void propagation() {
+        testService.jpaDelete();
+        testService.mybatisDelete();
+
+
+        int i = 1 / 0;
     }
 
 }
